@@ -102,7 +102,14 @@ initDb(function(err){
   console.log('Error connecting to Mongo. Message:\n'+err);
 });
 
+function text2Binary(string) {
+    return string.split('').map(function (char) {
+        return char.charCodeAt(0).toString(2);
+    }).join(' ');
+};
+
 app.listen(port, ip);
 console.log('Server running on http://%s:%s', ip, port);
 console.log("Testing Binary logs");
+console.log(text2Binary("blablalba"));
 module.exports = app ;
